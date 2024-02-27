@@ -13,7 +13,7 @@ def login():
   
          # flashes on successful login 
          flash('You were successfully logged in')  
-         return redirect(url_for('index')) 
+         return 'Logged in'
    return render_template('login.html', error = error) 
   
 if __name__=='__main__': 
