@@ -5,15 +5,14 @@ import { useEffect, useState } from 'react'
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
   const [email, setEmail] = useState('')
 
   return (
     <div className="App">
        <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-          <Route path="/home" element={<Secure email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+          <Route path="/" element={<Login setEmail={setEmail} />} />
+          <Route path="/secure" element={<Secure email={email} />} />
         </Routes>
       </BrowserRouter>
     </div>
