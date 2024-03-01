@@ -1,26 +1,23 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Secure from './secure'
 import Login from './login'
-import PrivateRoutes from './utils/PrivateRoutes'
-import { useState } from 'react'
+import { CookiesProvider, useCookies } from 'react-cookie'
 import './App.css';
 
 function App() {
-  const [email, setEmail] = useState('')
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [cookies, setCookie] = useCookies(['user'])
 
+  const login = (user) => {
+    setCookie('user', user, { path: '/' })
+  }
+
+  const logout = () => {
+    setCookie('user', '', { path: '/' })
+  }
 
   return (
-    <div className="App">
-       <BrowserRouter>
-        <Routes>
-          <Route element={<PrivateRoutes  loggedIn={loggedIn}/>} >
-            <Route path="/" element={<Secure email={email} setLoggedIn={setLoggedIn} />} />
-          </Route>
-          <Route path="/login" element={<Login setEmail={setEmail} setLoggedIn={setLoggedIn} />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <CookiesProvider>
+      <div>{cookies.user ? <Secure user={cookies.user} onLogout={logout} /> : <Login onLogin={login} />}</div>
+    </CookiesProvider>
   );
 }
 

@@ -1,13 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const Secure = (props) => {
-  const { email } = props
-  const navigate = useNavigate()
 
   const onButtonClick = () => {
-    props.setLoggedIn(false)
-    navigate('/login')
+    props.onLogout()
   }
 
   return (
@@ -23,7 +19,7 @@ const Secure = (props) => {
           onClick={onButtonClick}
           value={'Log out'}
         />
-        <div>Your email address is {email}</div>
+        <div>Your email address is {props.user}</div>
       </div>
     </div>
   )
