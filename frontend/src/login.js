@@ -23,15 +23,11 @@ const Login = (props) => {
         setEmailError('Please enter a valid email')
         return
     }
-    if (password.length < 8) {
-      setPasswordError('Password must be at least 8 characters long')
-      return
-    }
-    Login()
+    check_account()
 
   }
 
-  const Login = () => {
+  const check_account = () => {
     fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
@@ -55,13 +51,13 @@ const Login = (props) => {
   return (
     <div className={'mainContainer'}>
         <div className={'titleContainer'}>
-            <div>Login</div>
+            <div>Sign In</div>
         </div>
         <br />
         <div className={'inputContainer'}>
             <input
                 value={email}
-                placeholder="Enter your email"
+                placeholder="Enter email"
                 onChange={(ev) => setEmail(ev.target.value)}
                 className={'inputBox'}
             />
@@ -72,7 +68,7 @@ const Login = (props) => {
             <input
                 type = "password"
                 value={password}
-                placeholder="Enter your password"
+                placeholder="Enter password"
                 onChange={(ev) => setPassword(ev.target.value)}
                 className={'inputBox'}
             />
@@ -80,7 +76,7 @@ const Login = (props) => {
         </div>
         <br />
         <div className={'inputContainer'}>
-            <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+            <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Sign In'} />
         </div>
     </div>
   )

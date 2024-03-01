@@ -9,17 +9,17 @@ const Secure = (props) => {
   return (
     <div className="mainContainer">
       <div className={'titleContainer'}>
-        <div>Welcome!</div>
+        <div>This page is Secure</div>
       </div>
-      <div>This page is Secure</div>
+      
       <div className={'buttonContainer'}>
+        <div>Account: {props.user}</div>
         <input
           className={'inputButton'}
           type="button"
           onClick={onButtonClick}
-          value={'Log out'}
+          value={'Sign out'}
         />
-        <div>Your email address is {props.user}</div>
       </div>
     </div>
   )
