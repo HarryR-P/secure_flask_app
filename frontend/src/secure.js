@@ -6,7 +6,8 @@ const Secure = (props) => {
   const navigate = useNavigate()
 
   const onButtonClick = () => {
-    // You'll update this function later
+    props.setLoggedIn(false)
+    navigate('/login')
   }
 
   return (
